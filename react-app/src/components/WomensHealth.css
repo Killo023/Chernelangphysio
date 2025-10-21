@@ -1,0 +1,282 @@
+/* =============== WOMEN'S HEALTH SECTION =============== */
+.womens-health {
+    background: linear-gradient(135deg, rgba(146, 161, 132, 0.05) 0%, rgba(109, 122, 98, 0.05) 100%);
+    padding: 6rem 0;
+}
+
+.womens-health__content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.womens-health__intro {
+    margin-bottom: 4rem;
+}
+
+.womens-health__description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.womens-health__services {
+    margin-bottom: 4rem;
+}
+
+.womens-health__services-title,
+.womens-health__importance-title,
+.womens-health__approach-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.womens-health__services-title::after,
+.womens-health__importance-title::after,
+.womens-health__approach-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-light), var(--primary-color), var(--primary-light));
+    border-radius: 2px;
+}
+
+.womens-health__services-intro {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: var(--font-semibold);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.service-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    border-left: 4px solid var(--primary-color);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.service-card__title {
+    font-size: 1.3rem;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    font-weight: var(--font-bold);
+}
+
+.service-card__description {
+    color: var(--text-gray);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.womens-health__importance {
+    margin-bottom: 4rem;
+    background: var(--white);
+    padding: 3rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.womens-health__importance-text {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.womens-health__issues-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.womens-health__issues-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.womens-health__issues-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary-color);
+    font-weight: var(--font-bold);
+    font-size: 1.2rem;
+}
+
+.womens-health__approach {
+    background: linear-gradient(135deg, rgba(146, 161, 132, 0.08) 0%, rgba(109, 122, 98, 0.08) 100%);
+    padding: 3rem;
+    border-radius: var(--border-radius-lg);
+    margin-bottom: 2rem;
+}
+
+.womens-health__approach-intro {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    text-align: justify;
+}
+
+.approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.approach-item {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.approach-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.approach-item__title {
+    font-size: 1.2rem;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+    font-weight: var(--font-bold);
+}
+
+.approach-item__description {
+    color: var(--text-gray);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.womens-health__conclusion {
+    text-align: center;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.womens-health__conclusion-text {
+    font-size: 1.2rem;
+    color: var(--primary-dark);
+    line-height: 1.7;
+    font-weight: var(--font-semibold);
+    font-style: italic;
+}
+
+/* =============== RESPONSIVE DESIGN =============== */
+@media screen and (max-width: 968px) {
+    .womens-health {
+        padding: 4rem 0;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .approach-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .womens-health__importance,
+    .womens-health__approach {
+        padding: 2rem;
+    }
+
+    .womens-health__services-title,
+    .womens-health__importance-title,
+    .womens-health__approach-title {
+        font-size: 1.75rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .womens-health {
+        padding: 3rem 0;
+    }
+
+    .service-card,
+    .approach-item {
+        padding: 1.5rem;
+    }
+
+    .womens-health__importance,
+    .womens-health__approach {
+        padding: 1.5rem;
+    }
+
+    .womens-health__description,
+    .womens-health__importance-text,
+    .womens-health__approach-intro {
+        font-size: 1rem;
+    }
+
+    .womens-health__services-intro {
+        font-size: 1rem;
+    }
+
+    .womens-health__services-title,
+    .womens-health__importance-title,
+    .womens-health__approach-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .womens-health__content {
+        padding: 0 1rem;
+    }
+
+    .service-card,
+    .approach-item {
+        padding: 1.25rem;
+    }
+
+    .womens-health__importance,
+    .womens-health__approach {
+        padding: 1.25rem;
+    }
+
+    .womens-health__conclusion {
+        padding: 1.5rem;
+    }
+
+    .womens-health__conclusion-text {
+        font-size: 1.1rem;
+    }
+}

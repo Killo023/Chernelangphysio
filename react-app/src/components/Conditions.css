@@ -1,0 +1,109 @@
+/* =============== CONDITIONS SECTION =============== */
+.conditions {
+    background: linear-gradient(135deg, var(--white) 0%, var(--bg-light) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.conditions::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+.conditions__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.condition__card {
+    background: var(--white);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.condition__card:nth-child(1) { animation-delay: 0.1s; }
+.condition__card:nth-child(2) { animation-delay: 0.2s; }
+.condition__card:nth-child(3) { animation-delay: 0.3s; }
+.condition__card:nth-child(4) { animation-delay: 0.4s; }
+
+.condition__card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-light);
+}
+
+.condition__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--bg-light);
+}
+
+.condition__icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.condition__category {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    font-family: var(--font-heading);
+}
+
+.condition__list {
+    list-style: none;
+    padding: 0;
+}
+
+.condition__list li {
+    padding: 0.75rem 0;
+    color: var(--text-gray);
+    position: relative;
+    padding-left: 1.75rem;
+    line-height: 1.6;
+    transition: var(--transition);
+}
+
+.condition__list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: var(--font-bold);
+    font-size: 1.1rem;
+}
+
+.condition__list li:hover {
+    color: var(--primary-color);
+    padding-left: 2rem;
+}
+
+/* =============== RESPONSIVE =============== */
+@media screen and (max-width: 768px) {
+    .conditions__grid {
+        grid-template-columns: 1fr;
+    }
+}
+

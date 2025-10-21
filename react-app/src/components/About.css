@@ -1,0 +1,165 @@
+/* =============== ABOUT SECTION =============== */
+.about {
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
+        url('/Media/WhatsApp Image 2025-06-21 at 13.49.22 (2).jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.about__container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.about__image {
+    position: sticky;
+    top: calc(var(--header-height) + 2rem);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.about__img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.about__content {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(10px);
+}
+
+.about__content .section__title {
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+.about__subtitle {
+    display: block;
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.about__section {
+    margin-bottom: 2rem;
+}
+
+.about__section h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-family: var(--font-heading);
+}
+
+.about__list {
+    list-style: none;
+    padding: 0;
+}
+
+.about__list li {
+    color: var(--text-gray);
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+    padding-left: 1.75rem;
+    position: relative;
+}
+
+.about__list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: var(--font-bold);
+    font-size: 1.1rem;
+}
+
+.about__stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+.stat__item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background-color: rgba(248, 249, 250, 0.9);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.stat__item:hover {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: var(--shadow-sm);
+}
+
+.stat__item i {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+}
+
+.stat__item h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+    color: var(--primary-color);
+}
+
+.stat__item p {
+    font-size: var(--small-font-size);
+    color: var(--text-light);
+}
+
+/* =============== RESPONSIVE =============== */
+@media screen and (max-width: 968px) {
+    .about {
+        background-attachment: scroll;
+    }
+
+    .about__container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about__image {
+        position: relative;
+        top: 0;
+        order: -1;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .about__content {
+        padding: 2rem;
+    }
+
+    .about__content .section__title {
+        text-align: center;
+    }
+
+    .about__subtitle {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .about__stats {
+        grid-template-columns: 1fr;
+    }
+
+    .about__content {
+        padding: 1.5rem;
+    }
+}

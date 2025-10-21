@@ -1,0 +1,12 @@
+/* =============== FOOTER =============== */
+.footer {
+    background-color: var(--text-dark);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer__copy {
+    color: var(--white);
+    font-size: var(--small-font-size);
+}
+

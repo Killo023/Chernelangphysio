@@ -1,0 +1,343 @@
+/* =============== HERO SECTION =============== */
+.hero {
+    margin-top: var(--header-height);
+    background-image: 
+        linear-gradient(rgba(250, 249, 247, 0.6), rgba(250, 249, 247, 0.6)),
+        url('/Media/Gemini_Generated_Image_l1z6p3l1z6p3l1z6.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: calc(100vh - var(--header-height));
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.hero__container {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    gap: 4rem;
+    align-items: center;
+    min-height: calc(100vh - var(--header-height));
+    width: 100%;
+    padding: 3rem 0;
+}
+
+/* =============== HERO CONTENT =============== */
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 2rem;
+}
+
+.hero__main {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero__title {
+    font-size: 3.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    font-weight: 700;
+    text-align: left;
+    word-wrap: break-word;
+    letter-spacing: -0.02em;
+}
+
+.hero__subtitle {
+    font-size: 1.4rem;
+    color: var(--text-gray);
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+    text-align: left;
+    word-wrap: break-word;
+    line-height: 1.5;
+}
+
+.button-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 1.25rem 3rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 8px 25px rgba(146, 161, 132, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.button-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.button-primary:hover::before {
+    left: 100%;
+}
+
+.button-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(146, 161, 132, 0.4);
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+}
+
+/* =============== HERO STORY SECTION =============== */
+.hero__story {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: 4px solid var(--primary-color);
+}
+
+.story__header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(146, 161, 132, 0.2);
+}
+
+.story__title {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.story__brand {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.story__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.story__text {
+    color: var(--text-dark);
+    line-height: 1.7;
+    font-size: 1rem;
+    margin: 0;
+    text-align: justify;
+}
+
+.story__text strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* =============== HERO IMAGE =============== */
+.hero__image {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.hero__logo {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.hero__logo:hover {
+    transform: scale(1.02);
+}
+
+/* =============== RESPONSIVE DESIGN =============== */
+@media screen and (max-width: 1200px) {
+    .hero__container {
+        grid-template-columns: 60% 40%;
+        gap: 3rem;
+        padding: 2rem 0;
+    }
+
+    .hero__title {
+        font-size: 3rem;
+    }
+
+    .hero__subtitle {
+        font-size: 1.3rem;
+    }
+
+    .hero__logo {
+        max-width: 450px;
+    }
+}
+
+@media screen and (max-width: 968px) {
+    .hero {
+        background-attachment: scroll;
+    }
+
+    .hero__container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        gap: 3rem;
+        height: auto;
+        min-height: auto;
+        padding: 2rem 0;
+    }
+
+    .hero__content {
+        padding: 1rem;
+        gap: 2rem;
+        order: 1;
+    }
+
+    .hero__main {
+        padding: 2.5rem;
+    }
+
+    .hero__image {
+        padding: 1rem;
+        order: 2;
+    }
+
+    .hero__title {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 1.25rem;
+        line-height: 1.15;
+    }
+
+    .hero__subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero__logo {
+        max-width: 400px;
+    }
+
+    .story__brand {
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hero__content {
+        padding: 0.5rem;
+    }
+
+    .hero__main {
+        padding: 2rem;
+    }
+
+    .hero__story {
+        padding: 2rem;
+    }
+
+    .hero__title {
+        font-size: 2.2rem;
+    }
+
+    .hero__subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 1.75rem;
+    }
+
+    .hero__logo {
+        max-width: 350px;
+    }
+
+    .button-primary {
+        padding: 1rem 2.5rem;
+        font-size: 1rem;
+    }
+
+    .story__title {
+        font-size: 1rem;
+    }
+
+    .story__brand {
+        font-size: 1.4rem;
+    }
+
+    .story__text {
+        font-size: 0.95rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero__container {
+        padding: 1rem 0;
+        gap: 2rem;
+    }
+
+    .hero__main {
+        padding: 1.5rem;
+    }
+
+    .hero__story {
+        padding: 1.5rem;
+    }
+
+    .hero__title {
+        font-size: 1.8rem;
+    }
+
+    .hero__subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero__logo {
+        max-width: 300px;
+    }
+
+    .button-primary {
+        padding: 0.875rem 2rem;
+        font-size: 0.95rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .story__title {
+        font-size: 0.9rem;
+    }
+
+    .story__brand {
+        font-size: 1.2rem;
+    }
+
+    .story__text {
+        font-size: 0.9rem;
+        text-align: left;
+    }
+
+    .hero__image {
+        padding: 1rem;
+    }
+}

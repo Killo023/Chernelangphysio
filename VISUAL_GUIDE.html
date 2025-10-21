@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Guide - Cherne Langeveldt Website</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 2rem;
+        }
+        .guide-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #92a184;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+        .section-preview {
+            margin: 2rem 0;
+            border: 2px solid #92a184;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .section-header {
+            background: #92a184;
+            color: white;
+            padding: 1rem 1.5rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .section-content {
+            padding: 1.5rem;
+            background: #fafafa;
+        }
+        .layout-box {
+            background: white;
+            border: 2px dashed #92a184;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            text-align: center;
+            color: #666;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        .color-palette {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        .color-box {
+            text-align: center;
+        }
+        .color-swatch {
+            width: 120px;
+            height: 80px;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .feature-list {
+            list-style: none;
+            padding: 1rem;
+        }
+        .feature-list li {
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            background: white;
+            border-left: 4px solid #92a184;
+            padding-left: 1rem;
+        }
+        .feature-list li::before {
+            content: "✓ ";
+            color: #92a184;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        .responsive-preview {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .device {
+            text-align: center;
+        }
+        .device-frame {
+            border: 3px solid #333;
+            border-radius: 10px;
+            background: white;
+            padding: 1rem;
+            display: inline-block;
+        }
+        .device-frame.mobile {
+            width: 150px;
+            height: 250px;
+        }
+        .device-frame.tablet {
+            width: 200px;
+            height: 250px;
+        }
+        .device-frame.desktop {
+            width: 300px;
+            height: 200px;
+        }
+        .mockup-content {
+            background: linear-gradient(135deg, #a8b598 0%, #92a184 100%);
+            height: 100%;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+        @media (max-width: 768px) {
+            .grid-2, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            .responsive-preview {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="guide-container">
+        <h1>🌿 Visual Layout Guide</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 3rem; font-size: 1.1rem;">
+            Cherne Langeveldt Physiotherapy Website Structure
+        </p>
+
+        <!-- Color Palette -->
+        <div class="section-preview">
+            <div class="section-header">🎨 Color Palette</div>
+            <div class="section-content">
+                <div class="color-palette">
+                    <div class="color-box">
+                        <div class="color-swatch" style="background: #92a184;"></div>
+                        <strong>Primary</strong><br>
+                        <code>#92a184</code>
+                    </div>
+                    <div class="color-box">
+                        <div class="color-swatch" style="background: #6d7a62;"></div>
+                        <strong>Primary Dark</strong><br>
+                        <code>#6d7a62</code>
+                    </div>
+                    <div class="color-box">
+                        <div class="color-swatch" style="background: #a8b598;"></div>
+                        <strong>Primary Light</strong><br>
+                        <code>#a8b598</code>
+                    </div>
+                    <div class="color-box">
+                        <div class="color-swatch" style="background: #2c3e50;"></div>
+                        <strong>Text Dark</strong><br>
+                        <code>#2c3e50</code>
+                    </div>
+                    <div class="color-box">
+                        <div class="color-swatch" style="background: #ffffff; border: 1px solid #ddd;"></div>
+                        <strong>White</strong><br>
+                        <code>#ffffff</code>
+                    </div>
+                    <div class="color-box">
+                        <div class="color-swatch" style="background: #f8f9fa;"></div>
+                        <strong>Light Gray</strong><br>
+                        <code>#f8f9fa</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Layout Structure -->
+        <div class="section-preview">
+            <div class="section-header">📐 Section 1: Header/Navigation (Sticky)</div>
+            <div class="section-content">
+                <div class="grid-2">
+                    <div class="layout-box" style="text-align: left;">
+                        <strong>Logo:</strong> ❤️ Cherne Langeveldt Physiotherapy
+                    </div>
+                    <div class="layout-box" style="text-align: right;">
+                        <strong>Menu:</strong> Home | Services | About | Contact
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-preview">
+            <div class="section-header">🎯 Section 2: Hero Section</div>
+            <div class="section-content">
+                <div class="grid-2">
+                    <div class="layout-box" style="padding: 2rem; text-align: left;">
+                        <h2 style="color: #92a184; margin-bottom: 1rem;">Restore Movement, Live Pain-Free</h2>
+                        <p style="color: #666; margin-bottom: 1rem;">Expert, personalized physiotherapy in a caring environment</p>
+                        <div style="background: #92a184; color: white; padding: 0.75rem 1.5rem; display: inline-block; border-radius: 5px;">
+                            📅 Book an Appointment →
+                        </div>
+                    </div>
+                    <div class="layout-box" style="background: linear-gradient(135deg, #a8b598 0%, #92a184 100%); color: white; padding: 3rem;">
+                        <div style="font-size: 4rem;">👨‍⚕️</div>
+                        <p>Hero Image</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-preview">
+            <div class="section-header">💼 Section 3: Services (4 Cards)</div>
+            <div class="section-content">
+                <h3 style="text-align: center; color: #92a184; margin-bottom: 1rem;">Our Specialized Services</h3>
+                <div class="grid-4">
+                    <div class="layout-box">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #a8b598 0%, #92a184 100%); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            🏃
+                        </div>
+                        <strong>Sports Injuries</strong>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem;">Athletic injury treatment</p>
+                    </div>
+                    <div class="layout-box">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #a8b598 0%, #92a184 100%); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            🏥
+                        </div>
+                        <strong>Post-Operative Rehab</strong>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem;">Post-surgery recovery</p>
+                    </div>
+                    <div class="layout-box">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #a8b598 0%, #92a184 100%); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            💚
+                        </div>
+                        <strong>Chronic Pain Management</strong>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem;">Long-term relief</p>
+                    </div>
+                    <div class="layout-box">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #a8b598 0%, #92a184 100%); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            🦴
+                        </div>
+                        <strong>Back & Neck Pain</strong>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem;">Spinal care</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-preview">
+            <div class="section-header">👤 Section 4: About Cherne</div>
+            <div class="section-content">
+                <div class="grid-2">
+                    <div class="layout-box" style="background: linear-gradient(135deg, #a8b598 0%, #92a184 100%); color: white; padding: 3rem;">
+                        <div style="font-size: 4rem;">👤</div>
+                        <p style="margin-top: 1rem; font-weight: bold;">Cherne Langeveldt</p>
+                    </div>
+                    <div class="layout-box" style="text-align: left; padding: 2rem;">
+                        <h3 style="color: #92a184; margin-bottom: 1rem;">Meet Cherne Langeveldt</h3>
+                        <p style="color: #666; line-height: 1.6; margin-bottom: 1rem;">
+                            Years of dedicated experience... personalized, patient-centered care... evidence-based treatment...
+                        </p>
+                        <div class="grid-2" style="margin-top: 1rem;">
+                            <div style="background: #f8f9fa; padding: 1rem; border-radius: 5px;">
+                                <strong style="color: #92a184;">🏆 Certified Professional</strong>
+                            </div>
+                            <div style="background: #f8f9fa; padding: 1rem; border-radius: 5px;">
+                                <strong style="color: #92a184;">👥 Patient-Centered</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-preview">
+            <div class="section-header">📧 Section 5: Contact</div>
+            <div class="section-content">
+                <h3 style="text-align: center; color: #92a184; margin-bottom: 1rem;">Get In Touch</h3>
+                <div class="grid-2">
+                    <div class="layout-box" style="text-align: left; padding: 1.5rem;">
+                        <strong>Contact Form:</strong>
+                        <div style="margin: 1rem 0; padding: 0.75rem; background: white; border: 2px solid #ddd; border-radius: 5px;">Name</div>
+                        <div style="margin: 1rem 0; padding: 0.75rem; background: white; border: 2px solid #ddd; border-radius: 5px;">Email</div>
+                        <div style="margin: 1rem 0; padding: 2rem 0.75rem; background: white; border: 2px solid #ddd; border-radius: 5px;">Message</div>
+                        <div style="background: #92a184; color: white; padding: 0.75rem; text-align: center; border-radius: 5px; margin-top: 1rem;">
+                            Send Message ✉️
+                        </div>
+                    </div>
+                    <div class="layout-box" style="text-align: left; padding: 1.5rem;">
+                        <strong>Contact Info:</strong>
+                        <div style="margin: 1rem 0; padding: 1rem; background: white; border-radius: 5px;">
+                            📞 +27 (0)21 123 4567
+                        </div>
+                        <div style="margin: 1rem 0; padding: 1rem; background: white; border-radius: 5px;">
+                            ✉️ info@chernephysio.co.za
+                        </div>
+                        <div style="margin: 1rem 0; padding: 1rem; background: white; border-radius: 5px;">
+                            📍 123 Main Street<br>Cape Town, 8001
+                        </div>
+                        <div style="margin: 1rem 0; padding: 2rem; background: #e0e0e0; border-radius: 5px; text-align: center;">
+                            🗺️ Map Location
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="section-preview">
+            <div class="section-header">✨ Key Features</div>
+            <div class="section-content">
+                <ul class="feature-list">
+                    <li><strong>Fully Responsive</strong> - Works on mobile, tablet, and desktop</li>
+                    <li><strong>Sticky Navigation</strong> - Menu stays at top when scrolling</li>
+                    <li><strong>Smooth Scrolling</strong> - Animated transitions between sections</li>
+                    <li><strong>Mobile Menu</strong> - Hamburger menu for small screens</li>
+                    <li><strong>Active Link Highlighting</strong> - Shows current section</li>
+                    <li><strong>Hover Animations</strong> - Interactive buttons and cards</li>
+                    <li><strong>Contact Form</strong> - With validation and success message</li>
+                    <li><strong>Professional Icons</strong> - Font Awesome integration</li>
+                    <li><strong>Fast Loading</strong> - Pure HTML/CSS/JS, no frameworks</li>
+                    <li><strong>Clean Code</strong> - Well-organized and documented</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Responsive Preview -->
+        <div class="section-preview">
+            <div class="section-header">📱 Responsive Design</div>
+            <div class="section-content">
+                <div class="responsive-preview">
+                    <div class="device">
+                        <div class="device-frame mobile">
+                            <div class="mockup-content">Mobile<br>≤768px</div>
+                        </div>
+                        <p style="margin-top: 0.5rem; font-weight: bold;">Phone</p>
+                    </div>
+                    <div class="device">
+                        <div class="device-frame tablet">
+                            <div class="mockup-content">Tablet<br>768-968px</div>
+                        </div>
+                        <p style="margin-top: 0.5rem; font-weight: bold;">Tablet</p>
+                    </div>
+                    <div class="device">
+                        <div class="device-frame desktop">
+                            <div class="mockup-content">Desktop<br>≥968px</div>
+                        </div>
+                        <p style="margin-top: 0.5rem; font-weight: bold;">Desktop</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #92a184; color: #666;">
+            <p><strong>Your website is complete and ready to use!</strong></p>
+            <p style="margin-top: 0.5rem;">Open <code>index.html</code> in your browser to view it.</p>
+            <p style="margin-top: 2rem; font-size: 0.9rem;">Created: October 8, 2025 | Technology: HTML5 + CSS3 + JavaScript</p>
+        </div>
+    </div>
+</body>
+</html>
+
