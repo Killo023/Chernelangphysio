@@ -1,0 +1,155 @@
+/* =============== HEADER & NAVIGATION =============== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-dark); /* Olive green to match logo background */
+    box-shadow: var(--shadow-sm);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.nav {
+    height: 6rem; /* Increased to accommodate 50% larger logo */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0; /* Increased padding for better spacing */
+}
+
+.nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.nav__logo-img {
+    height: 105px; /* Increased by 50% from 70px */
+    width: auto;
+    object-fit: contain;
+}
+
+.nav__logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav__logo-name {
+    font-family: var(--font-heading);
+    font-weight: var(--font-bold);
+    font-size: 1.1rem;
+    color: var(--white); /* White text on dark background */
+    line-height: 1.2;
+}
+
+.nav__logo-tagline {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+    font-style: italic;
+    line-height: 1;
+}
+
+.nav__list {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav__link {
+    color: rgba(255, 255, 255, 0.9); /* White text for links */
+    font-weight: var(--font-semibold);
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav__link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--white); /* White underline */
+    transition: var(--transition);
+}
+
+.nav__link:hover,
+.nav__link.active-link {
+    color: var(--white); /* White text on hover/active */
+}
+
+.nav__link:hover::after,
+.nav__link.active-link::after {
+    width: 100%;
+}
+
+.nav__toggle,
+.nav__close {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--white); /* White hamburger menu */
+}
+
+/* =============== MOBILE NAVIGATION =============== */
+@media screen and (max-width: 768px) {
+    .nav__menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        height: 100vh;
+        background-color: var(--primary-dark); /* Match header olive green background */
+        padding: 6rem 2rem 2rem;
+        box-shadow: var(--shadow-lg);
+        transition: var(--transition);
+    }
+
+    .nav__menu.show-menu {
+        right: 0;
+    }
+
+    .nav__list {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .nav__link {
+        font-size: 1.1rem;
+        color: var(--white); /* White text in mobile menu */
+    }
+
+    .nav__toggle,
+    .nav__close {
+        display: block;
+    }
+
+    .nav__close {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .nav__logo-img {
+        height: 84px; /* Increased by 50% from 56px for mobile */
+    }
+
+    .nav__logo-name {
+        font-size: 0.95rem;
+    }
+
+    .nav__logo-tagline {
+        font-size: 0.65rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav__logo-text {
+        display: none;
+    }
+
+    .nav__logo-img {
+        height: 72px; /* Increased by 50% from 48px for small mobile */
+    }
+}

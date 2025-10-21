@@ -1,92 +1,241 @@
-# Cherne Langeveldt Physiotherapy Website
+# 🌿 Cherne Langeveldt Physiotherapy - React Website
 
-A modern, responsive one-page website for a professional physiotherapy practice.
+A modern, responsive React website for a professional physiotherapy practice with olive green branding.
 
-## 🌿 Features
+## 🚀 Quick Start
 
-- **Responsive Design**: Fully mobile-first and responsive across all devices
-- **Modern UI**: Clean, professional design with olive green color scheme
-- **Smooth Navigation**: Sticky header with smooth scrolling
-- **Interactive Elements**: Mobile menu toggle, scroll animations, and active link highlighting
-- **Contact Form**: Functional contact form with success feedback
-- **Accessible**: Built with accessibility best practices
+### Running the Website
 
-## 🎨 Design Highlights
+```bash
+# Navigate to the react-app directory
+cd react-app
 
-- **Primary Color**: Olive Green (#92a184)
-- **Typography**: 
-  - Headings: Poppins (Google Fonts)
-  - Body: Open Sans (Google Fonts)
-- **Icons**: Font Awesome 6
-- **Layout**: CSS Grid and Flexbox for modern, flexible layouts
+# Install dependencies (if not already installed)
+npm install
 
-## 📂 File Structure
-
-```
-├── index.html          # Main HTML structure
-├── styles.css          # All CSS styles and responsive design
-├── script.js           # JavaScript for interactivity
-└── README.md           # Project documentation
+# Start the development server
+npm run dev
 ```
 
-## 🚀 Getting Started
+The website will open at: **http://localhost:5173**
 
-1. **Open the website**: Simply open `index.html` in any modern web browser
-2. **No build process required**: Pure HTML, CSS, and JavaScript - no dependencies or build tools needed
-3. **Works offline**: All resources loaded from CDN will work when online
+## 📁 Project Structure
 
-## 📱 Sections
+```
+react-app/
+├── src/
+│   ├── components/
+│   │   ├── Header.jsx       # Navigation header with mobile menu
+│   │   ├── Header.css
+│   │   ├── Hero.jsx         # Hero section with CTA
+│   │   ├── Hero.css
+│   │   ├── Services.jsx     # 4 service cards
+│   │   ├── Services.css
+│   │   ├── About.jsx        # About Cherne section
+│   │   ├── About.css
+│   │   ├── Contact.jsx      # Contact form & info
+│   │   ├── Contact.css
+│   │   ├── Footer.jsx       # Footer component
+│   │   └── Footer.css
+│   ├── App.jsx              # Main app component
+│   ├── App.css              # Global styles
+│   └── main.jsx             # Entry point
+├── index.html               # HTML template
+└── package.json             # Dependencies
+```
 
-1. **Header/Navigation** - Sticky navigation with logo and menu links
-2. **Hero Section** - Eye-catching introduction with CTA button
-3. **Services** - Four specialized service cards with icons and descriptions
-4. **About** - Introduction to Cherne Langeveldt with professional credentials
-5. **Contact** - Contact form and business information
-6. **Footer** - Copyright information
+## ✨ Features
 
-## 🎯 Customization
+### React Features
+- ✅ **Component-Based Architecture** - Modular, reusable components
+- ✅ **React Hooks** - useState, useEffect for state management
+- ✅ **Smooth Scrolling** - Custom scroll handlers
+- ✅ **Active Link Tracking** - Highlights current section in navigation
+- ✅ **Mobile Menu** - Hamburger menu with state management
+- ✅ **Form Handling** - Controlled components for contact form
+- ✅ **Animations** - CSS animations triggered by React
 
-### Colors
-Edit the CSS variables in `styles.css`:
+### Design Features
+- ✅ **Olive Green Color Scheme** (#92a184)
+- ✅ **Fully Responsive** - Mobile, tablet, desktop
+- ✅ **Modern Typography** - Poppins + Open Sans
+- ✅ **Professional Icons** - Font Awesome integration
+- ✅ **Smooth Animations** - Hover effects, transitions
+- ✅ **Accessible** - Semantic HTML, proper ARIA labels
+
+## 🎨 Components Overview
+
+### Header Component
+- Sticky navigation bar
+- Mobile hamburger menu
+- Active link highlighting based on scroll position
+- Smooth scroll to sections
+
+### Hero Component
+- Eye-catching headline
+- Call-to-action button
+- Gradient placeholder for hero image
+
+### Services Component
+- 4 service cards:
+  - Sports Injuries
+  - Post-Operative Rehab
+  - Chronic Pain Management
+  - Back & Neck Pain
+- Animated card reveals
+- Hover effects
+
+### About Component
+- Professional bio section
+- Credentials showcase
+- Photo placeholder
+
+### Contact Component
+- Functional contact form with React state
+- Form validation
+- Success message display
+- Contact information cards
+- Map placeholder
+
+### Footer Component
+- Copyright information
+
+## 🛠️ Customization
+
+### Update Contact Information
+
+Edit `src/components/Contact.jsx`:
+```jsx
+// Lines with phone, email, and address
+<p>+27 (0)21 123 4567</p>  // Change this
+<p>info@chernephysio.co.za</p>  // Change this
+<p>123 Main Street...</p>  // Change this
+```
+
+### Change Colors
+
+Edit `src/App.css`:
 ```css
 :root {
-    --primary-color: #92a184;
+    --primary-color: #92a184;  /* Change this for different color */
     --primary-dark: #6d7a62;
-    /* ... */
+    --primary-light: #a8b598;
 }
 ```
 
-### Content
-All content can be edited directly in `index.html` by modifying the text within the respective sections.
+### Add Your Photo
 
-### Contact Form
-The contact form currently displays a success message on submission. To connect it to a backend:
-1. Add your form handling endpoint in `script.js`
-2. Update the form submission logic to send data via AJAX/Fetch API
+Replace the placeholder in `src/components/About.jsx`:
+```jsx
+<div className="about__image">
+  <img src="/path-to-your-photo.jpg" alt="Cherne Langeveldt" />
+</div>
+```
 
-## 🌐 Browser Support
+## 📦 Available Scripts
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
+```bash
+# Start development server
+npm run dev
 
-## 📝 Future Enhancements
+# Build for production
+npm run build
 
-- Connect contact form to email service (EmailJS, Formspree, etc.)
-- Add real images for hero section and about section
-- Integrate Google Maps for location
-- Add testimonials section
-- Add blog/resources section
-- Implement booking system integration
+# Preview production build
+npm run preview
+```
+
+## 🌐 Building for Production
+
+```bash
+# Create optimized production build
+npm run build
+
+# The build will be in the 'dist' folder
+# Upload the contents of 'dist' to your web host
+```
+
+## 🚀 Deployment Options
+
+### Netlify (Recommended)
+1. Push code to GitHub
+2. Connect repository to Netlify
+3. Build command: `npm run build`
+4. Publish directory: `dist`
+
+### Vercel
+1. Push code to GitHub
+2. Import project to Vercel
+3. Vercel auto-detects Vite settings
+
+### GitHub Pages
+```bash
+npm install gh-pages --save-dev
+# Add to package.json scripts:
+# "deploy": "gh-pages -d dist"
+npm run build
+npm run deploy
+```
+
+## 🔧 Tech Stack
+
+- **React 18** - UI library
+- **Vite** - Build tool (fast, modern)
+- **CSS3** - Styling (CSS Modules per component)
+- **Font Awesome 6** - Icons
+- **Google Fonts** - Typography
+
+## 📱 Responsive Breakpoints
+
+- **Mobile**: ≤ 768px
+- **Tablet**: 768px - 968px
+- **Desktop**: ≥ 968px
+
+## ✅ Features Checklist
+
+- ✅ Sticky navigation with active link highlighting
+- ✅ Mobile hamburger menu
+- ✅ Smooth scrolling between sections
+- ✅ Hero section with CTA
+- ✅ 4 service cards with animations
+- ✅ About section with credentials
+- ✅ Contact form with validation
+- ✅ Success message on form submit
+- ✅ Contact information display
+- ✅ Fully responsive design
+- ✅ Hover effects and transitions
+- ✅ Professional olive green theme
+
+## 🎯 Next Steps
+
+1. **Customize Content**
+   - Update contact information
+   - Add your professional photo
+   - Customize bio text
+
+2. **Enhance Features**
+   - Connect contact form to email service (EmailJS, Formspree)
+   - Add Google Maps integration
+   - Add patient testimonials
+
+3. **Deploy**
+   - Build for production
+   - Deploy to Netlify, Vercel, or your preferred host
+
+## 📚 Learn More
+
+- [React Documentation](https://react.dev)
+- [Vite Documentation](https://vitejs.dev)
+- [Font Awesome Icons](https://fontawesome.com/icons)
 
 ## 📄 License
 
-This website template is created for Cherne Langeveldt Physiotherapy. Feel free to customize and use as needed.
+This project is created for Cherne Langeveldt Physiotherapy. Free to customize and use.
 
 ---
 
-**Created**: October 2025  
-**Version**: 1.0.0
+**Created**: October 8, 2025  
+**Technology**: React 18 + Vite  
+**Design Theme**: Olive Green Professional Medical  
+**Status**: ✅ Complete and Ready to Use
 
