@@ -88,6 +88,64 @@
     font-size: 1.1rem;
 }
 
+.form__error {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: #fee;
+    border: 2px solid #fcc;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    color: #c33;
+    font-size: var(--small-font-size);
+    animation: slideIn 0.3s ease-out;
+}
+
+.form__error i {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.form__error p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.button[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.button[disabled]:hover {
+    transform: none;
+}
+
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .contact__social-banner {
     background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
     padding: 2rem;

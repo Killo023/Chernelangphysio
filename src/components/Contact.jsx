@@ -8,28 +8,63 @@ const Contact = () => {
     message: ''
   });
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+    // Clear error when user starts typing
+    if (error) setError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // In a real application, you would send this data to a server
-    console.log('Form submitted with data:', formData);
-    
-    // Show success message
-    setShowSuccess(true);
-    
-    // Reset form and hide success message after 5 seconds
-    setTimeout(() => {
+    // Clear previous errors
+    setError('');
+    setIsLoading(true);
+
+    try {
+      // Call the Vercel serverless function
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message. Please try again.');
+      }
+
+      // Show success message
+      setShowSuccess(true);
+      
+      // Reset form
       setFormData({ name: '', email: '', message: '' });
-      setShowSuccess(false);
-    }, 5000);
+      
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 5000);
+
+    } catch (err) {
+      console.error('Error sending email:', err);
+      setError(err.message || 'Failed to send message. Please try again later.');
+      
+      // Clear error after 7 seconds
+      setTimeout(() => {
+        setError('');
+      }, 7000);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -84,15 +119,35 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button type="submit" className="button button-primary">
-                Send Message
-                <i className="fas fa-paper-plane"></i>
+              {error && (
+                <div className="form__error">
+                  <i className="fas fa-exclamation-circle"></i>
+                  <p>{error}</p>
+                </div>
+              )}
+
+              <button 
+                type="submit" 
+                className="button button-primary"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <span>Sending...</span>
+                    <i className="fas fa-spinner fa-spin"></i>
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <i className="fas fa-paper-plane"></i>
+                  </>
+                )}
               </button>
             </form>
 
             <div className={`form__success ${showSuccess ? 'show' : ''}`}>
               <i className="fas fa-check-circle"></i>
-              <p>Thank you! Your message has been sent successfully.</p>
+              <p>Thank you! Your message has been sent successfully. We'll get back to you soon.</p>
             </div>
           </div>
 
