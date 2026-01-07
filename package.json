@@ -10,10 +10,11 @@
     "generate-favicon": "node scripts/generate-favicon.js"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "nodemailer": "^6.9.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "resend": "^3.2.0",
-    "nodemailer": "^6.9.7"
+    "resend": "^3.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",

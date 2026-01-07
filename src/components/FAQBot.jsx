@@ -5,6 +5,7 @@ const FAQBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [isLoading, setIsLoading] = useState(false);
   const [chatMessages, setChatMessages] = useState([
     {
       type: 'bot',
@@ -126,59 +127,79 @@ const FAQBot = () => {
     scrollToBottom();
   };
 
-  // Handle user input
-  const handleSendMessage = (e) => {
+  // Handle user input with Gemini AI
+  const handleSendMessage = async (e) => {
     e.preventDefault();
     const query = searchQuery.trim();
-    if (!query) return;
+    if (!query || isLoading) return;
 
     // Add user message
-    const newMessages = [
-      ...chatMessages,
-      {
-        type: 'user',
-        text: query,
-        timestamp: new Date()
-      }
-    ];
+    const userMessage = {
+      type: 'user',
+      text: query,
+      timestamp: new Date()
+    };
+    
+    const newMessages = [...chatMessages, userMessage];
     setChatMessages(newMessages);
     setSearchQuery('');
+    setIsLoading(true);
 
-    // Find matching FAQ
-    const matchingFAQ = faqs.find(faq =>
-      faq.question.toLowerCase().includes(query.toLowerCase()) ||
-      faq.answer.toLowerCase().includes(query.toLowerCase())
-    );
+    try {
+      // Prepare conversation history for context
+      const conversationHistory = chatMessages
+        .filter(msg => msg.type !== 'system')
+        .map(msg => ({
+          type: msg.type === 'user' ? 'user' : 'assistant',
+          text: msg.text
+        }));
 
-    // Bot response
-    setTimeout(() => {
-      let botResponse;
-      if (matchingFAQ) {
-        botResponse = matchingFAQ.answer;
-      } else {
-        const keywords = query.toLowerCase();
-        if (keywords.includes('book') || keywords.includes('appointment')) {
-          botResponse = faqs.find(f => f.category === 'appointments')?.answer || 
-                       'You can book an appointment by using our contact form, calling 083 235 6980, or emailing info@chernelangphysio.co.za';
-        } else if (keywords.includes('location') || keywords.includes('address') || keywords.includes('where')) {
-          botResponse = faqs.find(f => f.category === 'location')?.answer;
-        } else if (keywords.includes('service') || keywords.includes('treatment') || keywords.includes('what')) {
-          botResponse = faqs.find(f => f.category === 'services')?.answer;
-        } else {
-          botResponse = "I'm here to help! Here are some questions I can answer. Feel free to ask about our services, appointments, location, or anything else related to physiotherapy.";
-        }
+      // Call Gemini API
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: query,
+          conversationHistory: conversationHistory
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to get response');
       }
 
+      // Add bot response
       setChatMessages([
         ...newMessages,
         {
           type: 'bot',
-          text: botResponse,
+          text: data.message,
           timestamp: new Date()
         }
       ]);
+      
+    } catch (error) {
+      console.error('Chat error:', error);
+      
+      // Fallback response
+      const fallbackMessage = "I apologize, but I'm having trouble processing your request right now. Please feel free to contact us directly at 083 235 6980 or info@chernelangphysio.co.za. I'm here to help!";
+      
+      setChatMessages([
+        ...newMessages,
+        {
+          type: 'bot',
+          text: fallbackMessage,
+          timestamp: new Date()
+        }
+      ]);
+    } finally {
+      setIsLoading(false);
       scrollToBottom();
-    }, 500);
+    }
   };
 
   const scrollToBottom = () => {
@@ -306,6 +327,17 @@ const FAQBot = () => {
                   </div>
                 </div>
               ))}
+              {isLoading && (
+                <div className="chat-message bot">
+                  <div className="message-content">
+                    <div className="typing-indicator">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+              )}
               <div ref={chatEndRef} />
             </div>
           )}
@@ -315,16 +347,26 @@ const FAQBot = () => {
         <form className="faq-bot-input" onSubmit={handleSendMessage}>
           <input
             type="text"
-            placeholder="Type your question..."
+            placeholder="Ask me anything about our services..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             ref={inputRef}
+            disabled={isLoading}
           />
-          <button type="submit" aria-label="Send message">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="22" y1="2" x2="11" y2="13"></line>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-            </svg>
+          <button type="submit" aria-label="Send message" disabled={isLoading}>
+            {isLoading ? (
+              <svg className="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" strokeDasharray="32" strokeDashoffset="32">
+                  <animate attributeName="stroke-dasharray" dur="2s" values="0 32;16 16;0 32;0 32" repeatCount="indefinite"/>
+                  <animate attributeName="stroke-dashoffset" dur="2s" values="0;-16;-32;-32" repeatCount="indefinite"/>
+                </circle>
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            )}
           </button>
         </form>
       </div>
