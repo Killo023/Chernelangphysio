@@ -20,11 +20,11 @@ const Hero = () => {
         <div className="hero__content">
           <div className="hero__main">
             <h1 className="hero__title" itemProp="name">
-              Physiotherapy Glenanda | Mondeor | Mulbarton | Physiotherapist Near Me
+              Cherné Langeveldt Physiotherapy
             </h1>
             <p className="hero__subtitle" itemProp="slogan">Care Beyond the Surface</p>
-            <p className="hero__location">
-              Expert Physiotherapy Services in <strong>Glenanda, Mondeor, Mulbarton, Winchester Hill, Columbine, Glenvista & Johannesburg South</strong>
+            <p className="hero__description">
+              Expert-led, evidence-based physiotherapy serving Johannesburg South
             </p>
             <a href="#contact" className="button button-primary" onClick={scrollToContact} aria-label="Book an appointment at Cherné Langeveldt Physiotherapy">
               Book an Appointment
