@@ -137,7 +137,7 @@ You can reply directly to this email to contact ${name} at ${email}.
           host: process.env.SMTP_HOST,
           port: smtpPort,
           secure: isSecure, // true for 465 (SSL), false for 587 (STARTTLS)
-          requireTLS: smtpPort === 587, // Require TLS for port 587 (GoDaddy requirement)
+          requireTLS: smtpPort === 587 && !isSecure, // Require TLS for port 587
           auth: {
             user: process.env.SMTP_USER,
             pass: process.env.SMTP_PASS,
@@ -145,10 +145,16 @@ You can reply directly to this email to contact ${name} at ${email}.
           tls: {
             // GoDaddy SMTP server certificate settings
             rejectUnauthorized: false, // Allow self-signed certificates
-            ciphers: 'SSLv3'
+            minVersion: 'TLSv1.2'
           },
-          connectionTimeout: 10000, // 10 second timeout
-          greetingTimeout: 10000
+          // Increased timeouts for GoDaddy SMTP
+          connectionTimeout: 30000, // 30 second timeout (increased from 10s)
+          greetingTimeout: 30000, // 30 second timeout (increased from 10s)
+          socketTimeout: 30000, // 30 second socket timeout
+          // Retry configuration
+          pool: false,
+          maxConnections: 1,
+          maxMessages: 1
         });
 
         const mailOptions = {
