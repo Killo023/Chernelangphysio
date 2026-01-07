@@ -12,10 +12,10 @@ GoDaddy uses **`smtpout.secureserver.net`** (not `smtp.secureserver.net`) for ou
 SMTP_HOST = smtpout.secureserver.net
 SMTP_PORT = 465
 SMTP_SECURE = true
-SMTP_USER = info@chernephysio.co.za
+SMTP_USER = info@chernelangphysio.co.za
 SMTP_PASS = Killo23011@
-RECIPIENT_EMAIL = info@chernephysio.co.za
-SENDER_EMAIL = info@chernephysio.co.za
+RECIPIENT_EMAIL = info@chernelangphysio.co.za
+SENDER_EMAIL = info@chernelangphysio.co.za
 SERVICE_NAME = Cherné Langeveldt Physiotherapy
 ```
 
@@ -49,7 +49,7 @@ GoDaddy may require SMTP authentication to be enabled:
 
 1. Log in to your **GoDaddy account**
 2. Go to **Email & Office Dashboard**
-3. Select your email account (`info@chernephysio.co.za`)
+3. Select your email account (`info@chernelangphysio.co.za`)
 4. Check **SMTP settings** or contact GoDaddy support to enable SMTP authentication
 
 **Note:** Some GoDaddy accounts have SMTP authentication disabled by default and need to be enabled manually.
@@ -63,7 +63,7 @@ GoDaddy may require SMTP authentication to be enabled:
 ### Step 4: Test
 
 1. Submit the contact form on your website
-2. Check `info@chernephysio.co.za` inbox
+2. Check `info@chernelangphysio.co.za` inbox
 3. Check Vercel Function Logs if errors occur
 
 ## 🔍 GoDaddy SMTP Server Options
@@ -120,11 +120,11 @@ If you need help:
 Before using in Vercel, test your SMTP settings with an email client:
 
 1. **Using Outlook/Thunderbird:**
-   - Add account: `info@chernephysio.co.za`
+   - Add account: `info@chernelangphysio.co.za`
    - SMTP: `smtpout.secureserver.net`
    - Port: `465` (SSL) or `587` (TLS)
    - Authentication: Required
-   - Username: `info@chernephysio.co.za`
+   - Username: `info@chernelangphysio.co.za`
    - Password: Your email password
 
 2. **If email client works**, SMTP credentials are correct
