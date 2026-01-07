@@ -231,22 +231,45 @@ You can reply directly to this email to contact ${name} at ${email}.
 
     // If neither Resend nor SMTP is configured
     const hasResendKey = !!process.env.RESEND_API_KEY;
-    const hasSmtpConfig = !!(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
+    const hasSmtpHost = !!process.env.SMTP_HOST;
+    const hasSmtpUser = !!process.env.SMTP_USER;
+    const hasSmtpPass = !!process.env.SMTP_PASS;
+    const hasSmtpConfig = hasSmtpHost && hasSmtpUser && hasSmtpPass;
     
-    console.error('Email service not configured:', {
+    // Log detailed information for debugging
+    console.error('Email service configuration check:', {
       hasResendKey,
       hasSmtpConfig,
-      smtpHost: process.env.SMTP_HOST ? 'Set' : 'Not set',
-      smtpUser: process.env.SMTP_USER ? 'Set' : 'Not set',
-      smtpPass: process.env.SMTP_PASS ? 'Set' : 'Not set'
+      smtpHost: hasSmtpHost ? `Set (${process.env.SMTP_HOST})` : 'Not set',
+      smtpUser: hasSmtpUser ? 'Set' : 'Not set',
+      smtpPass: hasSmtpPass ? 'Set' : 'Not set',
+      smtpPort: process.env.SMTP_PORT || 'Not set',
+      allEnvKeys: Object.keys(process.env).filter(key => 
+        key.includes('SMTP') || key.includes('RESEND') || key.includes('EMAIL')
+      )
     });
     
+    // Provide helpful error message
+    let errorMessage = 'Email service not configured. ';
+    if (!hasResendKey && !hasSmtpConfig) {
+      errorMessage += 'Please set RESEND_API_KEY or SMTP credentials (SMTP_HOST, SMTP_USER, SMTP_PASS) in Vercel environment variables and redeploy.';
+      if (hasSmtpHost && !hasSmtpUser) {
+        errorMessage += ' SMTP_HOST is set but SMTP_USER is missing.';
+      } else if (hasSmtpUser && !hasSmtpHost) {
+        errorMessage += ' SMTP_USER is set but SMTP_HOST is missing.';
+      } else if (hasSmtpHost && hasSmtpUser && !hasSmtpPass) {
+        errorMessage += ' SMTP_HOST and SMTP_USER are set but SMTP_PASS is missing.';
+      }
+    }
+    
     return res.status(500).json({ 
-      error: 'Email service not configured. Please set RESEND_API_KEY or SMTP credentials (SMTP_HOST, SMTP_USER, SMTP_PASS) in Vercel environment variables and redeploy.',
-      debug: process.env.NODE_ENV === 'development' ? {
-        hasResendKey,
-        hasSmtpConfig
-      } : undefined
+      error: errorMessage,
+      debug: {
+        smtpHostSet: hasSmtpHost,
+        smtpUserSet: hasSmtpUser,
+        smtpPassSet: hasSmtpPass,
+        resendKeySet: hasResendKey
+      }
     });
 
   } catch (error) {
