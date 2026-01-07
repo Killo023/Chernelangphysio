@@ -1,0 +1,12 @@
+# robots.txt for Cherné Langeveldt Physiotherapy
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://www.chernelangphysio.co.za/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+

@@ -15,13 +15,18 @@ const Hero = () => {
   };
 
   return (
-    <section className="hero section" id="home">
+    <section className="hero section" id="home" itemScope itemType="https://schema.org/Physiotherapy">
       <div className="hero__container container">
         <div className="hero__content">
           <div className="hero__main">
-            <h1 className="hero__title">Cherné Langeveldt Physiotherapy</h1>
-            <p className="hero__subtitle">Care Beyond the Surface</p>
-            <a href="#contact" className="button button-primary" onClick={scrollToContact}>
+            <h1 className="hero__title" itemProp="name">
+              Physiotherapy Glenanda | Physiotherapist Near Me | Johannesburg South
+            </h1>
+            <p className="hero__subtitle" itemProp="slogan">Care Beyond the Surface</p>
+            <p className="hero__location">
+              Expert Physiotherapy Services in <strong>Glenanda, Glenvista & Johannesburg South</strong>
+            </p>
+            <a href="#contact" className="button button-primary" onClick={scrollToContact} aria-label="Book an appointment at Cherné Langeveldt Physiotherapy">
               Book an Appointment
             </a>
           </div>
@@ -45,7 +50,12 @@ const Hero = () => {
         </div>
         
         <div className="hero__image">
-          <img src="/Media/c17-1.jpg" alt="Cherné Langeveldt Physiotherapy" className="hero__logo" />
+          <img 
+            src="/Media/c17-1.jpg" 
+            alt="Physiotherapy clinic in Glenanda and Glenvista, Johannesburg South - Cherné Langeveldt Physiotherapy" 
+            className="hero__logo"
+            itemProp="image"
+          />
         </div>
       </div>
     </section>

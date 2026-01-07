@@ -2,12 +2,15 @@ import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer" itemScope itemType="https://schema.org/Physiotherapy">
       <div className="container">
         <p className="footer__copy">
-          &copy; 2025 Cherné Langeveldt Physiotherapy. All rights reserved.
+          &copy; 2025 Cherné Langeveldt Physiotherapy - Physiotherapy Services in Glenanda, Glenvista & Johannesburg South. All rights reserved.
         </p>
-        <p className="footer__tagline">Care Beyond the Surface</p>
+        <p className="footer__tagline">Care Beyond the Surface | Expert Physiotherapist Near Me</p>
+        <div style={{ fontSize: '0.85rem', marginTop: '0.5rem', opacity: 0.8 }}>
+          <p>Physiotherapy Glenanda | Physiotherapist Glenvista | Johannesburg South Physiotherapy | Jozi South Physiotherapy</p>
+        </div>
       </div>
     </footer>
   );

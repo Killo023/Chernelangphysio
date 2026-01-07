@@ -29,11 +29,16 @@ const Header = ({ activeSection }) => {
   return (
     <header className="header" id="header">
       <nav className="nav container">
-        <div className="nav__logo">
-          <img src="/Media/Logo.jpeg" alt="Cherné Langeveldt Physiotherapy Logo" className="nav__logo-img" />
+        <div className="nav__logo" itemScope itemType="https://schema.org/Physiotherapy">
+          <img 
+            src="/Media/Logo.jpeg" 
+            alt="Physiotherapy Glenanda - Jozi South Physiotherapy - Cherné Langeveldt Physiotherapy Logo" 
+            className="nav__logo-img"
+            itemProp="logo"
+          />
           <div className="nav__logo-text">
-            <span className="nav__logo-name">Cherné Langeveldt Physiotherapy</span>
-            <span className="nav__logo-tagline">Care Beyond the Surface</span>
+            <span className="nav__logo-name" itemProp="name">Cherné Langeveldt Physiotherapy</span>
+            <span className="nav__logo-tagline" itemProp="slogan">Care Beyond the Surface | Physiotherapist Near Me</span>
           </div>
         </div>
 
