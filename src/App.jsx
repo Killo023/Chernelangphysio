@@ -7,6 +7,7 @@ import About from './components/About';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import FAQBot from './components/FAQBot';
 import './App.css';
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <FAQBot />
     </div>
   );
 }
