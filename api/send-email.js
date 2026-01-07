@@ -133,8 +133,12 @@ You can reply directly to this email to contact ${name} at ${email}.
         const smtpPort = parseInt(process.env.SMTP_PORT || '587');
         const isSecure = smtpPort === 465 || process.env.SMTP_SECURE === 'true';
         
+        // GoDaddy SMTP server configuration
+        // Note: GoDaddy uses smtpout.secureserver.net (outgoing) not smtp.secureserver.net
+        const smtpHost = process.env.SMTP_HOST || 'smtpout.secureserver.net';
+        
         const transporter = nodemailer.default.createTransport({
-          host: process.env.SMTP_HOST,
+          host: smtpHost,
           port: smtpPort,
           secure: isSecure, // true for 465 (SSL), false for 587 (STARTTLS)
           requireTLS: smtpPort === 587 && !isSecure, // Require TLS for port 587
@@ -145,16 +149,20 @@ You can reply directly to this email to contact ${name} at ${email}.
           tls: {
             // GoDaddy SMTP server certificate settings
             rejectUnauthorized: false, // Allow self-signed certificates
-            minVersion: 'TLSv1.2'
+            minVersion: 'TLSv1.2',
+            servername: smtpHost // Set SNI for SSL/TLS
           },
           // Increased timeouts for GoDaddy SMTP
-          connectionTimeout: 30000, // 30 second timeout (increased from 10s)
-          greetingTimeout: 30000, // 30 second timeout (increased from 10s)
+          connectionTimeout: 30000, // 30 second timeout
+          greetingTimeout: 30000, // 30 second timeout
           socketTimeout: 30000, // 30 second socket timeout
           // Retry configuration
           pool: false,
           maxConnections: 1,
-          maxMessages: 1
+          maxMessages: 1,
+          // Additional GoDaddy-specific settings
+          debug: false, // Set to true for verbose logging
+          logger: false
         });
 
         const mailOptions = {
