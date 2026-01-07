@@ -2,6 +2,17 @@
 // Supports Resend API (recommended) or SMTP
 
 export default async function handler(req, res) {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -121,11 +132,16 @@ You can reply directly to this email to contact ${name} at ${email}.
         const transporter = nodemailer.default.createTransport({
           host: process.env.SMTP_HOST,
           port: parseInt(process.env.SMTP_PORT || '587'),
-          secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
+          secure: process.env.SMTP_SECURE === 'true', // true for 465 (SSL), false for 587 (STARTTLS)
+          requireTLS: parseInt(process.env.SMTP_PORT || '587') === 587, // Require TLS for port 587
           auth: {
             user: process.env.SMTP_USER,
             pass: process.env.SMTP_PASS,
           },
+          tls: {
+            // Do not fail on invalid certs
+            rejectUnauthorized: false
+          }
         });
 
         const mailOptions = {
@@ -207,8 +223,23 @@ You can reply directly to this email to contact ${name} at ${email}.
     }
 
     // If neither Resend nor SMTP is configured
+    const hasResendKey = !!process.env.RESEND_API_KEY;
+    const hasSmtpConfig = !!(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
+    
+    console.error('Email service not configured:', {
+      hasResendKey,
+      hasSmtpConfig,
+      smtpHost: process.env.SMTP_HOST ? 'Set' : 'Not set',
+      smtpUser: process.env.SMTP_USER ? 'Set' : 'Not set',
+      smtpPass: process.env.SMTP_PASS ? 'Set' : 'Not set'
+    });
+    
     return res.status(500).json({ 
-      error: 'Email service not configured. Please set RESEND_API_KEY or SMTP credentials in environment variables.' 
+      error: 'Email service not configured. Please set RESEND_API_KEY or SMTP credentials (SMTP_HOST, SMTP_USER, SMTP_PASS) in Vercel environment variables and redeploy.',
+      debug: process.env.NODE_ENV === 'development' ? {
+        hasResendKey,
+        hasSmtpConfig
+      } : undefined
     });
 
   } catch (error) {

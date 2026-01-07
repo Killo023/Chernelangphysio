@@ -45,11 +45,11 @@ If you prefer to use your email provider's SMTP server directly:
 
 2. **Add environment variables in Vercel**:
    ```
-   SMTP_HOST=smtp.your-email-provider.com
-   SMTP_PORT=587
+   SMTP_HOST=smtp.secureserver.net
+   SMTP_PORT=443
    SMTP_SECURE=false
    SMTP_USER=info@chernephysio.co.za
-   SMTP_PASS=your-email-password
+   SMTP_PASS=CherneLangeveldt
    RECIPIENT_EMAIL=info@chernephysio.co.za
    SENDER_EMAIL=info@chernephysio.co.za
    SERVICE_NAME=Cherné Langeveldt Physiotherapy

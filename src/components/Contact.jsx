@@ -37,10 +37,22 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      // Check if response is OK and if it's JSON
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Server returned an invalid response. Please try again later.');
+      }
+
+      let data;
+      try {
+        data = await response.json();
+      } catch (jsonError) {
+        console.error('Failed to parse JSON response:', jsonError);
+        throw new Error('Server error. Please try again later.');
+      }
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message. Please try again.');
+        throw new Error(data.error || `Failed to send message (${response.status}). Please try again.`);
       }
 
       // Show success message
@@ -56,7 +68,15 @@ const Contact = () => {
 
     } catch (err) {
       console.error('Error sending email:', err);
-      setError(err.message || 'Failed to send message. Please try again later.');
+      let errorMessage = 'Failed to send message. Please try again later.';
+      
+      if (err instanceof TypeError && err.message.includes('fetch')) {
+        errorMessage = 'Network error. Please check your connection and try again.';
+      } else if (err.message) {
+        errorMessage = err.message;
+      }
+      
+      setError(errorMessage);
       
       // Clear error after 7 seconds
       setTimeout(() => {
