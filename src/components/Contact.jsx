@@ -237,7 +237,56 @@ const Contact = () => {
                 <p itemProp="streetAddress">246 Vorster Ave</p>
                 <p><span itemProp="addressLocality">Glenvista</span>, <span itemProp="addressRegion">Johannesburg South</span><br />
                 <span itemProp="postalCode">1448</span>, <span itemProp="addressCountry">South Africa</span></p>
-                <p><strong>Serving:</strong> Glenanda, Mondeor, Mulbarton, Winchester Hill, Columbine, Glenvista, Johannesburg South & Surrounding Areas</p>
+              </div>
+            </div>
+
+            {/* Service Areas Card */}
+            <div className="service-areas-card">
+              <div className="service-areas-header">
+                <div className="service-areas-icon">
+                  <i className="fas fa-map-marked-alt"></i>
+                </div>
+                <div className="service-areas-title-group">
+                  <h3 className="service-areas-title">Areas We Serve</h3>
+                  <p className="service-areas-subtitle">Expert physiotherapy services available in these areas</p>
+                </div>
+              </div>
+              <div className="service-areas-grid">
+                <div className="service-area-item">
+                  <i className="fas fa-location-dot"></i>
+                  <span>Glenanda</span>
+                </div>
+                <div className="service-area-item">
+                  <i className="fas fa-location-dot"></i>
+                  <span>Mondeor</span>
+                </div>
+                <div className="service-area-item">
+                  <i className="fas fa-location-dot"></i>
+                  <span>Mulbarton</span>
+                </div>
+                <div className="service-area-item">
+                  <i className="fas fa-location-dot"></i>
+                  <span>Winchester Hill</span>
+                </div>
+                <div className="service-area-item">
+                  <i className="fas fa-location-dot"></i>
+                  <span>Columbine</span>
+                </div>
+                <div className="service-area-item">
+                  <i className="fas fa-location-dot"></i>
+                  <span>Glenvista</span>
+                </div>
+                <div className="service-area-item service-area-wide">
+                  <i className="fas fa-location-dot"></i>
+                  <span>Johannesburg South</span>
+                </div>
+                <div className="service-area-item service-area-wide">
+                  <i className="fas fa-plus-circle"></i>
+                  <span>Surrounding Areas</span>
+                </div>
+              </div>
+              <div className="service-areas-footer">
+                <p><i className="fas fa-home"></i> Home visits available in selected areas</p>
               </div>
             </div>
 
