@@ -171,9 +171,9 @@ const Services = () => {
         {/* Specialized Services */}
         <div className="specialized__section">
           <div className="specialized__header">
-            <h2 className="specialized__title">Physiotherapy Services in Glenanda, Glenvista & Johannesburg South</h2>
+            <h2 className="specialized__title">Physiotherapy Services in Glenanda, Mondeor, Mulbarton, Winchester Hill, Columbine & Surrounding Areas</h2>
             <p className="specialized__subtitle">
-              Expert physiotherapy care serving Glenanda, Glenvista, and surrounding Johannesburg South areas
+              Expert physiotherapy care serving Glenanda, Mondeor, Mulbarton, Winchester Hill, Columbine, Glenvista, and Johannesburg South
             </p>
           </div>
           

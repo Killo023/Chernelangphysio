@@ -90,15 +90,23 @@ const Contact = () => {
   return (
     <section className="contact section" id="contact" itemScope itemType="https://schema.org/Physiotherapy">
       <div className="container">
-        <h2 className="section__title">Book Your Physiotherapy Appointment in Glenanda & Glenvista</h2>
-        <p className="section__subtitle">Ready to start your recovery journey? Contact our physiotherapy practice in Johannesburg South</p>
+        <h2 className="section__title">Book Your Physiotherapy Appointment in Glenanda, Mondeor, Mulbarton & Surrounding Areas</h2>
+        <p className="section__subtitle">Ready to start your recovery journey? Contact our physiotherapy practice serving Glenanda, Mondeor, Mulbarton, Winchester Hill, Columbine, Glenvista & Johannesburg South</p>
         
         {/* Hidden SEO Content - Visible to search engines */}
         <div style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }} aria-hidden="true">
           <h3>Physiotherapy Services Near Me</h3>
-          <p>Looking for a physiotherapist near me in Glenanda? Cherné Langeveldt Physiotherapy offers expert physiotherapy services in Glenanda, Glenvista, and Johannesburg South. Our practice specializes in sports physiotherapy, orthopaedic rehabilitation, women's health, chronic pain management, and more. Book your appointment today at 083 235 6980 or visit us at 246 Vorster Ave, Glenvista. We serve patients throughout Glenanda, Glenvista, Johannesburg South, and surrounding areas.</p>
-          <h3>Best Physiotherapist in Glenanda</h3>
-          <p>Find the best physiotherapist in Glenanda and Glenvista. Our practice offers comprehensive physiotherapy services including chest physiotherapy, cardiac rehabilitation, neurological rehabilitation, and sports injury treatment. We accept medical aid and offer home visits for patients with limited mobility.</p>
+          <p>Looking for a physiotherapist near me? Cherné Langeveldt Physiotherapy offers expert physiotherapy services in Glenanda, Mondeor, Mulbarton, Winchester Hill, Columbine, Glenvista, and Johannesburg South. Our practice specializes in sports physiotherapy, orthopaedic rehabilitation, women's health, chronic pain management, and more. Book your appointment today at 083 235 6980 or visit us at 246 Vorster Ave, Glenvista. We serve patients throughout Glenanda, Mondeor, Mulbarton, Winchester Hill, Columbine, Glenvista, Johannesburg South, and surrounding areas.</p>
+          <h3>Best Physiotherapist in Glenanda, Mondeor, Mulbarton</h3>
+          <p>Find the best physiotherapist in Glenanda, Mondeor, Mulbarton, Winchester Hill, Columbine, and Glenvista. Our practice offers comprehensive physiotherapy services including chest physiotherapy, cardiac rehabilitation, neurological rehabilitation, and sports injury treatment. We accept medical aid and offer home visits for patients with limited mobility in Glenanda, Mondeor, Mulbarton, Winchester Hill, Columbine, and surrounding Johannesburg South areas.</p>
+          <h3>Physiotherapy in Mondeor</h3>
+          <p>Expert physiotherapy services in Mondeor. Specializing in sports injuries, back pain, post-surgical rehabilitation, and chronic pain management.</p>
+          <h3>Physiotherapy in Mulbarton</h3>
+          <p>Comprehensive physiotherapy care in Mulbarton. Offering orthopaedic rehabilitation, women's health services, and neurological rehabilitation.</p>
+          <h3>Physiotherapy in Winchester Hill</h3>
+          <p>Professional physiotherapy services in Winchester Hill. Expert treatment for musculoskeletal conditions, sports injuries, and chronic pain.</p>
+          <h3>Physiotherapy in Columbine</h3>
+          <p>Quality physiotherapy care in Columbine. Specialized services including chest physiotherapy, cardiac rehabilitation, and sports performance.</p>
         </div>
 
         <div className="contact__container">
@@ -229,7 +237,7 @@ const Contact = () => {
                 <p itemProp="streetAddress">246 Vorster Ave</p>
                 <p><span itemProp="addressLocality">Glenvista</span>, <span itemProp="addressRegion">Johannesburg South</span><br />
                 <span itemProp="postalCode">1448</span>, <span itemProp="addressCountry">South Africa</span></p>
-                <p><strong>Serving:</strong> Glenanda, Glenvista, Johannesburg South & Surrounding Areas</p>
+                <p><strong>Serving:</strong> Glenanda, Mondeor, Mulbarton, Winchester Hill, Columbine, Glenvista, Johannesburg South & Surrounding Areas</p>
               </div>
             </div>
 

@@ -32,7 +32,7 @@ const Header = ({ activeSection }) => {
         <div className="nav__logo" itemScope itemType="https://schema.org/Physiotherapy">
           <img 
             src="/Media/Logo.jpeg" 
-            alt="Physiotherapy Glenanda - Jozi South Physiotherapy - Cherné Langeveldt Physiotherapy Logo" 
+            alt="Physiotherapy Glenanda, Mondeor, Mulbarton - Jozi South Physiotherapy - Cherné Langeveldt Physiotherapy Logo" 
             className="nav__logo-img"
             itemProp="logo"
           />
