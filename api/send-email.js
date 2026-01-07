@@ -129,19 +129,26 @@ You can reply directly to this email to contact ${name} at ${email}.
     if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
       try {
         const nodemailer = await import('nodemailer');
+        // GoDaddy SMTP configuration
+        const smtpPort = parseInt(process.env.SMTP_PORT || '587');
+        const isSecure = smtpPort === 465 || process.env.SMTP_SECURE === 'true';
+        
         const transporter = nodemailer.default.createTransport({
           host: process.env.SMTP_HOST,
-          port: parseInt(process.env.SMTP_PORT || '587'),
-          secure: process.env.SMTP_SECURE === 'true', // true for 465 (SSL), false for 587 (STARTTLS)
-          requireTLS: parseInt(process.env.SMTP_PORT || '587') === 587, // Require TLS for port 587
+          port: smtpPort,
+          secure: isSecure, // true for 465 (SSL), false for 587 (STARTTLS)
+          requireTLS: smtpPort === 587, // Require TLS for port 587 (GoDaddy requirement)
           auth: {
             user: process.env.SMTP_USER,
             pass: process.env.SMTP_PASS,
           },
           tls: {
-            // Do not fail on invalid certs
-            rejectUnauthorized: false
-          }
+            // GoDaddy SMTP server certificate settings
+            rejectUnauthorized: false, // Allow self-signed certificates
+            ciphers: 'SSLv3'
+          },
+          connectionTimeout: 10000, // 10 second timeout
+          greetingTimeout: 10000
         });
 
         const mailOptions = {
