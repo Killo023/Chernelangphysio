@@ -19,3 +19,4 @@ Updated `vercel.json` to:
 2. You can test it at: `https://www.chernelangphysio.co.za/api/send-email`
 3. Add environment variables as documented in `VERCEL_ENV_SETUP.md`
 
+

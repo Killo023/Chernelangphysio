@@ -33,7 +33,7 @@ export default async function handler(req, res) {
     }
 
     // Recipient email (from environment or default)
-    const recipientEmail = process.env.RECIPIENT_EMAIL || 'info@chernelangphysio.co.za';
+    const recipientEmail = process.env.RECIPIENT_EMAIL || 'cherne.langeveldt@gmail.com';
     const senderEmail = process.env.SENDER_EMAIL || recipientEmail;
     const serviceName = process.env.SERVICE_NAME || 'Cherné Langeveldt Physiotherapy';
 

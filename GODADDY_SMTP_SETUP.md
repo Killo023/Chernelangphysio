@@ -133,3 +133,4 @@ If you're still experiencing issues:
 
 **Status**: ✅ Configured and ready to use with GoDaddy SMTP
 
+

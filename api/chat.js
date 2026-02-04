@@ -48,14 +48,14 @@ Also known as: Jozi South Physiotherapy (on social media)
 
 CONTACT INFORMATION:
 - Phone: 083 235 6980
-- Email: info@chernelangphysio.co.za
+- Email: cherne.langeveldt@gmail.com
 - Address: 246 Vorster Ave, Glenvista, Johannesburg South, 1448, South Africa
 - WhatsApp: +27832356980
 
 APPOINTMENT BOOKING:
 - Book via contact form on website
 - Call 083 235 6980
-- Email info@chernelangphysio.co.za
+- Email cherne.langeveldt@gmail.com
 - WhatsApp: +27832356980
 - Session duration: Initial consultations 60-75 minutes, Follow-up sessions 45-60 minutes
 
@@ -147,7 +147,7 @@ INSURANCE:
 IMPORTANT GUIDELINES:
 - Be friendly, professional, and helpful
 - Always use the exact contact information provided above
-- If asked about operating hours, mention they should contact the practice directly (083 235 6980 or info@chernelangphysio.co.za)
+- If asked about operating hours, mention they should contact the practice directly (083 235 6980 or cherne.langeveldt@gmail.com)
 - If asked about pricing, direct them to contact the practice for specific rates
 - For bookings, always mention all available methods (contact form, phone, email, WhatsApp)
 - Be concise but informative
@@ -195,4 +195,5 @@ IMPORTANT GUIDELINES:
     });
   }
 }
+
 

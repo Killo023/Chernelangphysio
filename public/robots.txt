@@ -10,3 +10,4 @@ Sitemap: https://www.chernelangphysio.co.za/sitemap.xml
 # Crawl-delay
 Crawl-delay: 1
 
+

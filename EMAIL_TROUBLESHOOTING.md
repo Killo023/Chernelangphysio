@@ -153,3 +153,4 @@ If you're still experiencing issues:
 3. Verify environment variables are set correctly
 4. Try a simple Resend test email from their dashboard
 
+

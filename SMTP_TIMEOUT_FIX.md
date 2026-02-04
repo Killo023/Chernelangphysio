@@ -68,3 +68,4 @@ After updating configuration:
 3. Check Vercel Function Logs for errors
 4. If timeout persists, try port 465 or switch to Resend
 
+

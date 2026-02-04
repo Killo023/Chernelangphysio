@@ -28,7 +28,7 @@ const FAQBot = () => {
       id: 2,
       category: 'appointments',
       question: 'How do I book an appointment?',
-      answer: 'You can book an appointment by filling out the contact form on our website, calling us at 083 235 6980, or emailing info@chernelangphysio.co.za. We\'ll get back to you as soon as possible to schedule your session.'
+      answer: 'You can book an appointment by filling out the contact form on our website, calling us at 083 235 6980, or emailing cherne.langeveldt@gmail.com. We\'ll get back to you as soon as possible to schedule your session.'
     },
     {
       id: 3,
@@ -186,7 +186,7 @@ const FAQBot = () => {
       console.error('Chat error:', error);
       
       // Fallback response
-      const fallbackMessage = "I apologize, but I'm having trouble processing your request right now. Please feel free to contact us directly at 083 235 6980 or info@chernelangphysio.co.za. I'm here to help!";
+      const fallbackMessage = "I apologize, but I'm having trouble processing your request right now. Please feel free to contact us directly at 083 235 6980 or cherne.langeveldt@gmail.com. I'm here to help!";
       
       setChatMessages([
         ...newMessages,

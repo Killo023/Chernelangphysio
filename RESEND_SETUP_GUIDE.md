@@ -148,3 +148,4 @@ When a user submits the contact form:
 
 **This will solve your SMTP timeout issues!** Resend is built specifically for serverless functions like Vercel. 🚀
 
+
