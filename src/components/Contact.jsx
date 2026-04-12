@@ -52,7 +52,12 @@ const Contact = () => {
       }
 
       if (!response.ok) {
-        throw new Error(data.error || `Failed to send message (${response.status}). Please try again.`);
+        const parts = [data.error, data.hint].filter(Boolean);
+        throw new Error(
+          parts.length > 0
+            ? parts.join(' ')
+            : `Failed to send message (${response.status}). Please try again.`
+        );
       }
 
       // Show success message

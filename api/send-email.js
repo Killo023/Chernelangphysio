@@ -34,8 +34,12 @@ export default async function handler(req, res) {
 
     // Recipient email (from environment or default)
     const recipientEmail = process.env.RECIPIENT_EMAIL || 'cherne.langeveldt@gmail.com';
-    const senderEmail = process.env.SENDER_EMAIL || recipientEmail;
     const serviceName = process.env.SERVICE_NAME || 'Cherné Langeveldt Physiotherapy';
+    // Resend: use onboarding@resend.dev until your domain is verified (required "from" for sandbox).
+    // Do not default "from" to RECIPIENT_EMAIL — Resend rejects unverified from addresses.
+    const senderEmail =
+      process.env.SENDER_EMAIL ||
+      (process.env.RESEND_API_KEY ? 'onboarding@resend.dev' : recipientEmail);
 
     // Try Resend API first (if API key is provided)
     if (process.env.RESEND_API_KEY) {
@@ -110,10 +114,18 @@ You can reply directly to this email to contact ${name} at ${email}.
 
         if (result.error) {
           console.error('Resend error:', result.error);
-          return res.status(502).json({
-            error: result.error.message || 'Failed to send email via Resend',
-            hint:
-              'Set SENDER_EMAIL to onboarding@resend.dev until your domain is verified in Resend, or verify your domain and use an address on that domain.',
+          const msg = result.error.message || 'Failed to send email via Resend';
+          const isSandboxLimit =
+            /only send testing emails|verify a domain/i.test(msg) ||
+            result.error.name === 'validation_error';
+          const hint = isSandboxLimit
+            ? 'In Resend test mode you can only send TO the email that owns the API key, OR verify chernelangphysio.co.za at resend.com/domains, then set SENDER_EMAIL (e.g. contact@chernelangphysio.co.za) and RECIPIENT_EMAIL to your inbox.'
+            : 'Set SENDER_EMAIL=onboarding@resend.dev until your domain is verified, or verify your domain at resend.com/domains.';
+          // 422 = configuration / provider policy — not a gateway crash (avoid confusing "502 Bad Gateway")
+          return res.status(422).json({
+            error: msg,
+            hint,
+            code: 'RESEND_ERROR',
           });
         }
 
@@ -124,10 +136,12 @@ You can reply directly to this email to contact ${name} at ${email}.
         });
       } catch (resendErr) {
         console.error('Resend request failed:', resendErr);
-        return res.status(502).json({
-          error: resendErr.message || 'Resend request failed',
+        const msg = resendErr.message || 'Resend request failed';
+        return res.status(422).json({
+          error: msg,
           hint:
-            'Check RESEND_API_KEY and SENDER_EMAIL in Vercel. For testing, use SENDER_EMAIL=onboarding@resend.dev.',
+            'Check RESEND_API_KEY and SENDER_EMAIL in Vercel. Use SENDER_EMAIL=onboarding@resend.dev until your domain is verified. If you see "testing emails", verify your domain or set RECIPIENT_EMAIL to your Resend account email.',
+          code: 'RESEND_ERROR',
         });
       }
     }
