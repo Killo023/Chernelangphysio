@@ -52,6 +52,19 @@ const Contact = () => {
       }
 
       if (!response.ok) {
+        const isEmailServiceConfig =
+          response.status === 422 ||
+          data.code === 'RESEND_ERROR' ||
+          (typeof data.hint === 'string' &&
+            (data.hint.includes('resend.com') || data.hint.includes('Resend')));
+
+        if (isEmailServiceConfig) {
+          console.warn('[Contact form] Email service:', data.error, data.hint);
+          throw new Error(
+            'FORM_FALLBACK'
+          );
+        }
+
         const parts = [data.error, data.hint].filter(Boolean);
         throw new Error(
           parts.length > 0
@@ -74,9 +87,12 @@ const Contact = () => {
     } catch (err) {
       console.error('Error sending email:', err);
       let errorMessage = 'Failed to send message. Please try again later.';
-      
+
       if (err instanceof TypeError && err.message.includes('fetch')) {
         errorMessage = 'Network error. Please check your connection and try again.';
+      } else if (err.message === 'FORM_FALLBACK') {
+        errorMessage =
+          'We could not send your message through the form right now. Please call 083 235 6980 or email cherne.langeveldt@gmail.com — we will respond as soon as we can.';
       } else if (err.message) {
         errorMessage = err.message;
       }
