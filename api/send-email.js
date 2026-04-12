@@ -44,7 +44,7 @@ export default async function handler(req, res) {
         const resendClient = new Resend(process.env.RESEND_API_KEY);
         
         const result = await resendClient.emails.send({
-          from: senderEmail,
+          from: `"${serviceName}" <${senderEmail}>`,
           to: recipientEmail,
           replyTo: email,
           subject: `New Appointment Request from ${name}`,
@@ -110,7 +110,11 @@ You can reply directly to this email to contact ${name} at ${email}.
 
         if (result.error) {
           console.error('Resend error:', result.error);
-          throw new Error(result.error.message || 'Failed to send email via Resend');
+          return res.status(502).json({
+            error: result.error.message || 'Failed to send email via Resend',
+            hint:
+              'Set SENDER_EMAIL to onboarding@resend.dev until your domain is verified in Resend, or verify your domain and use an address on that domain.',
+          });
         }
 
         return res.status(200).json({ 
@@ -118,9 +122,13 @@ You can reply directly to this email to contact ${name} at ${email}.
           message: 'Email sent successfully',
           id: result.data?.id 
         });
-      } catch (importError) {
-        console.error('Failed to import Resend:', importError);
-        // Fall through to SMTP if Resend import fails
+      } catch (resendErr) {
+        console.error('Resend request failed:', resendErr);
+        return res.status(502).json({
+          error: resendErr.message || 'Resend request failed',
+          hint:
+            'Check RESEND_API_KEY and SENDER_EMAIL in Vercel. For testing, use SENDER_EMAIL=onboarding@resend.dev.',
+        });
       }
     }
 
@@ -266,7 +274,8 @@ You can reply directly to this email to contact ${name} at ${email}.
     // Provide helpful error message
     let errorMessage = 'Email service not configured. ';
     if (!hasResendKey && !hasSmtpConfig) {
-      errorMessage += 'Please set RESEND_API_KEY or SMTP credentials (SMTP_HOST, SMTP_USER, SMTP_PASS) in Vercel environment variables and redeploy.';
+      errorMessage +=
+        'Add RESEND_API_KEY (recommended) or SMTP_HOST, SMTP_USER, and SMTP_PASS in Vercel → Settings → Environment Variables. Enable them for Production, then redeploy.';
       if (hasSmtpHost && !hasSmtpUser) {
         errorMessage += ' SMTP_HOST is set but SMTP_USER is missing.';
       } else if (hasSmtpUser && !hasSmtpHost) {
